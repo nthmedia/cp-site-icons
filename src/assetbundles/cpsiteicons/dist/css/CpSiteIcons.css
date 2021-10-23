@@ -1,0 +1,22 @@
+/**
+ * CP Site Icons plugin for Craft CMS
+ *
+ * CP Site Icons CSS
+ *
+ * @author    NTH media
+ * @copyright Copyright (c) 2021 NTH media
+ * @link      https://nthmedia.nl
+ * @package   CpSiteIcons
+ * @since     1.0.0
+ */
+
+/* Display country flag before entry title */
+#header > .flex > h1::before {
+    overflow: hidden;
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-bottom: -0.1rem;
+    margin-right: 0.2rem;
+    font-size: 1.3rem;
+}

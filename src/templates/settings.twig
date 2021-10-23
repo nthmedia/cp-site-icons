@@ -1,0 +1,32 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * CP Site Icons plugin for Craft CMS 3.x
+ *
+ * CP Site Icons Settings.twig
+ *
+ * @author    NTH media
+ * @copyright Copyright (c) 2021 NTH media
+ * @link      https://nthmedia.nl
+ * @package   CpSiteIcons
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+<div class="flex">
+    <div class="label light">Key:</div>
+    <div class="textwrapper">
+        {{ forms.select({
+            id: 'key',
+            name: 'key',
+            value: settings['key'],
+            options: {
+                handle: 'Site handle',
+                language: 'Site language',
+            }
+        }) }}
+    </div>
+</div>
+

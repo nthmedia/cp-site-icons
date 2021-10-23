@@ -1,0 +1,36 @@
+{
+    "name": "nthmedia/cp-site-icons",
+    "description": "Display site icon when editing entries",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "cp site icons"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "NTH media",
+            "homepage": "https://nthmedia.nl"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "craftcms/cms": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "nthmedia\\cpsiteicons\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "CP Site Icons",
+        "handle": "cp-site-icons",
+        "developer": "NTH media",
+        "developerUrl": "https://nthmedia.nl",
+        "class": "nthmedia\\cpsiteicons\\CpSiteIcons"
+    }
+}
