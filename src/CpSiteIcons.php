@@ -95,7 +95,7 @@ class CpSiteIcons extends Plugin
 
     protected function getIcon(string $key): string
     {
-        $icons = $this->getSettings()->icons;
+        $icons = Craft::$app->config->getConfigFromFile('cp-site-icons');
 
         return $icons[$key] ?? '';
     }

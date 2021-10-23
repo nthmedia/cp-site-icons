@@ -26,11 +26,6 @@ class Settings extends Model
     // =========================================================================
 
     /**
-     * @var array
-     */
-    public array $icons = [];
-
-    /**
      * @var string
      */
     public string $key = 'language';
