@@ -2,7 +2,7 @@
     "name": "nthmedia/cp-site-icons",
     "description": "Display site icon when editing entries",
     "type": "craft-plugin",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "keywords": [
         "craft",
         "cms",
