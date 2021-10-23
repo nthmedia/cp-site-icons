@@ -97,7 +97,7 @@ class CpSiteIcons extends Plugin
     {
         $icons = Craft::$app->config->getConfigFromFile('cp-site-icons');
 
-        return $icons[$key] ?? '';
+        return $icons['icons'][$key] ?? '';
     }
 
     protected function addIconCssToView(): void
@@ -111,6 +111,7 @@ class CpSiteIcons extends Plugin
             View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE,
             function (TemplateEvent $event) {
                 $view = Craft::$app->getView();
+
                 $view->registerAssetBundle(CpSiteIconsAsset::class);
 
                 $key = $this->getSettings()->key;
