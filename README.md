@@ -24,21 +24,36 @@ To install the plugin, follow these instructions.
 
 4. You can choose if you want the site handle or site language as key to distinguish your sites. This key is also the key of the icons array in the config:
 
-5. Create `/config/cp-site-icons.php` and add your configuration, for example:
+5a. Create `/config/cp-site-icons.php` and add your configuration, for example:
 ```
 <?php
 
 return [
-    'icons' => [
-        'de' => '🇩🇪',
-        'de-AT' => '🇦🇹',
-        'en' => '🇬🇧',
-        'es' => '🇪🇸',
-        'fr' => '🇫🇷',
-        'it' => '🇮🇹',
-        'nl' => '🇳🇱',
-        'nl-BE' => '🇧🇪',
-    ],
+   'icons' => [
+      'de' => '🇩🇪',
+      'de-AT' => '🇦🇹',
+      'en' => '🇬🇧',
+      'es' => '🇪🇸',
+      'fr' => '🇫🇷',
+      'it' => '🇮🇹',
+      'nl' => '🇳🇱',
+      'nl-BE' => '🇧🇪',
+   ],
+];
+```
+
+5b. You can also use handles and/or custom CSS properties:
+
+```
+<?php
+
+return [
+   'icons' => [
+      'siteA' => [
+         'background' => 'url(/favicon/favicon-32x32.png)',
+         'background-size' => 'cover',
+         'content' =>  '""',
+      ],
 ];
 ```
 

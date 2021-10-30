@@ -93,11 +93,25 @@ class CpSiteIcons extends Plugin
     // Protected Methods
     // =========================================================================
 
-    protected function getIcon(string $key): string
+    protected function getCss(string $key): string
     {
         $icons = Craft::$app->config->getConfigFromFile('cp-site-icons');
 
-        return $icons['icons'][$key] ?? '';
+        if (array_key_exists($key, $icons['icons']) === false) {
+            return '';
+        }
+
+        if (is_array($icons['icons'][$key])) {
+            $output = '';
+            foreach ($icons['icons'][$key] as $property => $value) {
+                $output .= $property . ": " . $value . ';';
+            }
+            return $output;
+        } else {
+            $output = 'content: "' . $icons['icons'][$key] .'";';
+        }
+
+        return $output ?? '';
     }
 
     protected function addIconCssToView(): void
@@ -120,7 +134,7 @@ class CpSiteIcons extends Plugin
                     $view->registerCss('
                         /** Icon for ' . $key . ': ' . $site->{$key} .' */
                         .site--' . $site->handle . ' #header > .flex > h1::before {
-                            content: "' . $this->getIcon($site->{$key}) . '";
+                            ' . $this->getCss($site->{$key}) . '
                         }
                     ');
                 }
