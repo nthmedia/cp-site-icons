@@ -78,14 +78,7 @@ class CpSiteIcons extends Plugin
             }
         );
 
-        Craft::info(
-            Craft::t(
-                'cp-site-icons',
-                '{name} plugin loaded',
-                ['name' => $this->name]
-            ),
-            __METHOD__
-        );
+        Craft::info($this->name . ' plugin loaded', __METHOD__);
 
         $this->addIconCssToView();
     }
