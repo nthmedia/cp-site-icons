@@ -90,6 +90,11 @@ class CpSiteIcons extends Plugin
     {
         $icons = Craft::$app->config->getConfigFromFile('cp-site-icons');
 
+        if (! array_key_exists('icons', $icons)) {
+            Craft::$app->session->setError('Please add config/cp-site-icons.php. Read more: https://github.com/nthmedia/cp-site-icons');
+            return '';
+        }
+
         if (array_key_exists($key, $icons['icons']) === false) {
             return '';
         }
