@@ -10,10 +10,9 @@
 
 namespace nthmedia\cpsiteicons\models;
 
-use nthmedia\cpsiteicons\CpSiteIcons;
-
-use Craft;
 use craft\base\Model;
+
+use nthmedia\cpsiteicons\CpSiteIcons;
 
 /**
  * @author    NTH media

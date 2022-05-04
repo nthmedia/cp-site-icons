@@ -10,15 +10,15 @@
 
 namespace nthmedia\cpsiteicons;
 
+use Craft;
+use craft\base\Plugin;
+use craft\events\PluginEvent;
 use craft\events\TemplateEvent;
+
+use craft\services\Plugins;
 use craft\web\View;
 use nthmedia\cpsiteicons\assetbundles\cpsiteicons\CpSiteIconsAsset;
 use nthmedia\cpsiteicons\models\Settings;
-
-use Craft;
-use craft\base\Plugin;
-use craft\services\Plugins;
-use craft\events\PluginEvent;
 
 use yii\base\Event;
 
@@ -72,7 +72,7 @@ class CpSiteIcons extends Plugin
         Event::on(
             Plugins::class,
             Plugins::EVENT_AFTER_INSTALL_PLUGIN,
-            function (PluginEvent $event) {
+            function(PluginEvent $event) {
                 if ($event->plugin === $this) {
                 }
             }
@@ -83,10 +83,10 @@ class CpSiteIcons extends Plugin
         Craft::$app->getView()->hook(
             'cp.layouts.base',
             static function(array &$context) {
-                $siteHandle    = Craft::$app->request->getQueryParam('site');
+                $siteHandle = Craft::$app->request->getQueryParam('site');
 
                 $section = Craft::$app->request->getSegment(1);
-                $entry   = Craft::$app->request->getSegment(3);
+                $entry = Craft::$app->request->getSegment(3);
 
                 if ('entries' === $section && $entry) {
                     if (!$siteHandle) {
@@ -110,7 +110,7 @@ class CpSiteIcons extends Plugin
     {
         $icons = Craft::$app->config->getConfigFromFile('cp-site-icons');
 
-        if (! array_key_exists('icons', $icons)) {
+        if (!array_key_exists('icons', $icons)) {
             Craft::$app->session->setError('Please add config/cp-site-icons.php. Read more: https://github.com/nthmedia/cp-site-icons');
             return '';
         }
@@ -126,10 +126,10 @@ class CpSiteIcons extends Plugin
             }
             return $output;
         } else {
-            $output = 'content: "' . $icons['icons'][$key] .'";';
+            $output = 'content: "' . $icons['icons'][$key] . '";';
         }
 
-        return $output ?? '';
+        return $output;
     }
 
     protected function addIconCssToView(): void
@@ -141,16 +141,16 @@ class CpSiteIcons extends Plugin
         Event::on(
             View::class,
             View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE,
-            function (TemplateEvent $event) {
+            function(TemplateEvent $event) {
                 $view = Craft::$app->getView();
 
                 $view->registerAssetBundle(CpSiteIconsAsset::class);
 
-                $key = $this->getSettings()->key;
+                $key = $this->getSettings()->key ?? '';
 
                 foreach (Craft::$app->getRequest()->sites->allSites as $site) {
                     $view->registerCss('
-                        /** Icon for ' . $key . ': ' . $site->{$key} .' */
+                        /** Icon for ' . $key . ': ' . $site->{$key} . ' */
                         .site--' . $site->handle . ' #header > .flex > h1::before {
                             ' . $this->getCss($site->{$key}) . '
                         }
@@ -176,7 +176,7 @@ class CpSiteIcons extends Plugin
         return Craft::$app->view->renderTemplate(
             'cp-site-icons/settings',
             [
-                'settings' => $this->getSettings()
+                'settings' => $this->getSettings(),
             ]
         );
     }

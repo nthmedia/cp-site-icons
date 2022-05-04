@@ -10,7 +10,6 @@
 
 namespace nthmedia\cpsiteicons\assetbundles\cpsiteicons;
 
-use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
