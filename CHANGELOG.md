@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.0 - 2022-05-04
+### Added
+- Support Craft 4
+- Code quality
+- Error message in CP when config file does not exist
+
 ## 1.0.6 - 2021-12-22
 ### Added
 - Support PHP 8
