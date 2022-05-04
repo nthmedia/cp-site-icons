@@ -80,6 +80,26 @@ class CpSiteIcons extends Plugin
 
         Craft::info($this->name . ' plugin loaded', __METHOD__);
 
+        Craft::$app->getView()->hook(
+            'cp.layouts.base',
+            static function(array &$context) {
+                $siteHandle    = Craft::$app->request->getQueryParam('site');
+
+                $section = Craft::$app->request->getSegment(1);
+                $entry   = Craft::$app->request->getSegment(3);
+
+                if ('entries' === $section && $entry) {
+                    if (!$siteHandle) {
+                        $site = Craft::$app->getSites()->getPrimarySite();
+                    } else {
+                        $site = Craft::$app->getSites()->getSiteByHandle($siteHandle);
+                    }
+
+                    array_push($context['bodyAttributes']['class'], 'site--' . $site->handle, 'site--' . $site->language);
+                }
+            }
+        );
+
         $this->addIconCssToView();
     }
 
