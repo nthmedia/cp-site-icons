@@ -1,4 +1,4 @@
-# CP Site Icons plugin for Craft CMS 3.x
+# CP Site Icons plugin for Craft CMS
 
 Display site icon when editing entries, to be able to distinguish between different sites.
 
@@ -6,7 +6,7 @@ Display site icon when editing entries, to be able to distinguish between differ
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3 or 4
 
 ## Installation
 
@@ -20,7 +20,9 @@ To install the plugin, follow these instructions.
 
         composer require nthmedia/cp-site-icons
 
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for CP Site Icons.
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for CP Site Icons. Or enable it through the command line:
+    
+        ./craft plugin/install cp-site-icons
 
 4. You can choose if you want the site handle or site language as key to distinguish your sites. This key is also the key of the icons array in the config:
 
