@@ -69,6 +69,10 @@ class CpSiteIcons extends Plugin
         parent::init();
         self::$plugin = $this;
 
+        $this->aliases = [
+            '@nthmedia/cpsiteicons' => __DIR__,
+        ];
+
         Event::on(
             Plugins::class,
             Plugins::EVENT_AFTER_INSTALL_PLUGIN,
