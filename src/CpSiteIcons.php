@@ -155,7 +155,7 @@ class CpSiteIcons extends Plugin
                 foreach (Craft::$app->getRequest()->sites->allSites as $site) {
                     $view->registerCss('
                         /** Icon for ' . $key . ': ' . $site->{$key} . ' */
-                        .site--' . $site->handle . ' #header > .flex > h1::before {
+                        .site--' . $site->handle . ' #header > #page-title > h1::before {
                             ' . $this->getCss($site->{$key}) . '
                         }
                     ');

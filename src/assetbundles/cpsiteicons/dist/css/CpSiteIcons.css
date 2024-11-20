@@ -11,7 +11,7 @@
  */
 
 /* Display country flag before entry title */
-#header > .flex > h1::before {
+#header > #page-title > h1::before {
     overflow: hidden;
     display: inline-block;
     width: 1.5rem;
