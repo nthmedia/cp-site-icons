@@ -2,7 +2,7 @@
     "name": "nthmedia/cp-site-icons",
     "description": "Display site icon when editing entries",
     "type": "craft-plugin",
-    "version": "3.0.2",
+    "version": "3.1.0",
     "keywords": [
         "craft",
         "cms",
@@ -13,8 +13,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "NTH media",
-            "homepage": "https://nthmedia.nl"
+            "name": "sustdev",
+            "homepage": "https://sust.dev"
         }
     ],
     "require": {
@@ -29,8 +29,8 @@
     "extra": {
         "name": "CP Site Icons",
         "handle": "cp-site-icons",
-        "developer": "NTH media",
-        "developerUrl": "https://nthmedia.nl",
+        "developer": "sustdev",
+        "developerUrl": "https://sust.dev",
         "class": "nthmedia\\cpsiteicons\\CpSiteIcons"
     },
     "config": {

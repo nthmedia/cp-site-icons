@@ -1,6 +1,6 @@
 <?php
 /**
- * CP Site Icons plugin for Craft CMS 3.x
+ * CP Site Icons plugin for Craft CMS
  *
  * Display site icon when editing entries
  *
@@ -9,6 +9,11 @@
  */
 
 return [
+    // Where to display the site icons.
+    // Options: 'pageTitle', 'breadcrumbIcon'
+    // Default: ['pageTitle']
+    // 'position' => ['pageTitle'],
+
     'icons' => [
         'de' => '🇩🇪',
         'de-AT' => '🇦🇹',

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.0 - 2026-02-18
+### Added
+- New `position` config option to control where site icons are displayed
+- Support for `breadcrumbIcon` position to replace the default globe SVG in the breadcrumb bar
+- Multiple positions can be enabled simultaneously: `['breadcrumbIcon', 'pageTitle']`
+- Defaults to `['pageTitle']` for backwards compatibility
+
 ## 3.0.2 - 2024-11-20
 - Change icon alignment
 

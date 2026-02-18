@@ -147,18 +147,44 @@ class CpSiteIcons extends Plugin
             View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE,
             function(TemplateEvent $event) {
                 $view = Craft::$app->getView();
-
                 $view->registerAssetBundle(CpSiteIconsAsset::class);
+
+                $config = Craft::$app->config->getConfigFromFile('cp-site-icons');
+
+                // Check if the position is set in the config. This defaults to ['pageTitle'] for backwards compatibility.
+                $positions = (array)($config['position'] ?? ['pageTitle']);
+                
+                $showPageTitle = in_array('pageTitle', $positions);
+                $showBreadcrumb = in_array('breadcrumbIcon', $positions);
 
                 $key = $this->getSettings()->key ?? '';
 
-                foreach (Craft::$app->getRequest()->sites->allSites as $site) {
-                    $view->registerCss('
-                        /** Icon for ' . $key . ': ' . $site->{$key} . ' */
-                        .site--' . $site->handle . ' #header > #page-title > h1::before {
-                            ' . $this->getCss($site->{$key}) . '
+                if ($showPageTitle) {
+                    foreach (Craft::$app->getRequest()->sites->allSites as $site) {
+                        $view->registerCss('
+                            /** Icon for ' . $key . ': ' . $site->{$key} . ' */
+                            .site--' . $site->handle . ' #header > #page-title > h1::before {
+                                ' . $this->getCss($site->{$key}) . '
+                            }
+                        ');
+                    }
+                }
+
+                if ($showBreadcrumb) {
+                    $siteHandle = Craft::$app->request->getQueryParam('site');
+                    $currentSite = $siteHandle
+                        ? Craft::$app->getSites()->getSiteByHandle($siteHandle)
+                        : Craft::$app->getSites()->getPrimarySite();
+
+                    if ($currentSite) {
+                        $crumbCss = $this->getCss($currentSite->{$key});
+                        if ($crumbCss) {
+                            $view->registerCss('
+                                #site-crumb .cp-icon.puny svg { display: none; }
+                                #site-crumb .cp-icon.puny::before { ' . $crumbCss . ' }
+                            ');
                         }
-                    ');
+                    }
                 }
             }
         );

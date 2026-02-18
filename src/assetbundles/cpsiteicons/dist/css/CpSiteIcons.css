@@ -20,3 +20,20 @@
     margin-right: 0.2rem;
     font-size: 1.3rem;
 }
+
+#site-crumb .cp-icon.puny {
+    width: 1.5rem;
+    height: 1.5rem;
+    max-width: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Display country flag in breadcrumb */
+#site-crumb .cp-icon.puny::before {
+    overflow: hidden;
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.2rem;
+}
